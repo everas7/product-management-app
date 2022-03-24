@@ -4,7 +4,10 @@
 ```
 cd api
 cp .env.example .env
-docker-compose up
+docker-compose up -d
+
+docker exec -it api_api_1 bash
+npm run migrate && npm run seed
 ```
 
 ```

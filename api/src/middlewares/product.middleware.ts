@@ -89,16 +89,16 @@ export const validateProductModificationRules = async (
   const user = await userServices.getById((req.user as User)?.id);
   if (user) {
     req.user = user;
-    if (req.body.price !== undefined && Object.keys(req.body).length === 1) {
-      if (user.roles.includes(PRODUCT_PRICING)) {
-        next();
-        return;
-      }
-    } else {
-      if (user.roles.includes(PRODUCT_MANAGERS)) {
-        next();
-        return;
-      }
+    if (user.roles.includes(PRODUCT_MANAGERS)) {
+      next();
+      return;
+    }
+    if (user.roles.includes(PRODUCT_PRICING)) {
+      req.body = {
+        price: req.body.price,
+      };
+      next();
+      return;
     }
   }
   res

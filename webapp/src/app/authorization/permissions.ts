@@ -14,13 +14,17 @@ export const Permissions = {
     },
     Detail: {
       PageAccess: [PRODUCT_CREATORS, PRODUCT_MANAGERS, PRODUCT_PRICING],
-      ManageAction: [PRODUCT_MANAGERS],
+      EditAction: [PRODUCT_MANAGERS, PRODUCT_PRICING],
+      DeleteAction: [PRODUCT_MANAGERS],
     },
     Create: {
       PageAccess: [PRODUCT_CREATORS],
     },
     Edit: {
       PageAccess: [PRODUCT_MANAGERS, PRODUCT_PRICING],
+      Title: [PRODUCT_MANAGERS, PRODUCT_CREATORS],
+      Description: [PRODUCT_MANAGERS, PRODUCT_CREATORS],
+      Price: [PRODUCT_MANAGERS, PRODUCT_PRICING, PRODUCT_CREATORS]
     },
     Delete: {
       Action: [PRODUCT_MANAGERS],

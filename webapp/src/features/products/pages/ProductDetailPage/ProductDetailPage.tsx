@@ -76,17 +76,23 @@ export default function ProductDetailPage(): JSX.Element {
         <Row className={cx(styles["product-detail-page__content"])}>
           <Col md="6">
             <ProductCorousel />
-            <AuthorizedComponent
-              rolesAllowed={Permissions.Products.Detail.ManageAction as Role[]}
-            >
-              <div className={styles["product-detail-page__controls"]}>
+
+            <div className={styles["product-detail-page__controls"]}>
+              <AuthorizedComponent
+                rolesAllowed={Permissions.Products.Detail.EditAction as Role[]}
+              >
                 <IconButton
                   onClick={() => history.push(`/products/${id}/edit`)}
                   icon={<FaEdit />}
                 >
                   Edit
                 </IconButton>
-
+              </AuthorizedComponent>
+              <AuthorizedComponent
+                rolesAllowed={
+                  Permissions.Products.Detail.DeleteAction as Role[]
+                }
+              >
                 <IconButton
                   variant="danger"
                   icon={<FaTrashAlt />}
@@ -94,8 +100,8 @@ export default function ProductDetailPage(): JSX.Element {
                 >
                   Delete
                 </IconButton>
-              </div>
-            </AuthorizedComponent>
+              </AuthorizedComponent>
+            </div>
             {(product && <ProductDetails product={product} />) || ""}
           </Col>
         </Row>
