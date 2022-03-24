@@ -1,9 +1,9 @@
-import express from "express";
+import express, { RequestHandler } from "express";
 
 import { userRouter } from "./user.route";
 import { productRouter } from "./product.route";
 import { authRouter } from "./auth.route";
-import { authenticateUser } from "../middlewares/auth.middleware";
+import { authenticateJwt } from "../middlewares/auth.middleware";
 
 export const router = express.Router();
 
@@ -30,10 +30,12 @@ router.get("/", (req: express.Request, res: express.Response) => {
 
 routes.forEach((route) => {
   router.use(
-    ...[
-      route.path,
-      route.authenticate ? authenticateUser : null,
-      route.route,
-    ].filter((r) => r)
+    ...(
+      [
+        route.path,
+        route.authenticate ? authenticateJwt : null,
+        route.route,
+      ] as RequestHandler[]
+    ).filter((r) => r)
   );
 });

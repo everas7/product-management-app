@@ -6,7 +6,7 @@ module.exports = {
       {
         name: 'John Doe',
         email: 'jdoe@test.com',
-        roles: JSON.stringify(['PRODUCT_CREATOR', 'PRODUCT_MANAGER']),
+        roles: JSON.stringify(['PRODUCT_CREATORS', 'PRODUCT_MANAGERS']),
         password: await bcrypt.hash('strongpassword1', 10),
         createdAt: new Date(),
         updatedAt: new Date(),

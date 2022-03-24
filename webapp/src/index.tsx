@@ -1,14 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Routes from './routes/Routes';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import './index.scss';
+import App from "./App";
+
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import reportWebVitals from "./reportWebVitals";
+import { setupAxiosResponseInterceptor } from "./app/services/axios";
+import { store } from './app/store/store';
+
+export const history = createBrowserHistory();
+
+setupAxiosResponseInterceptor(store);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <Provider store={store}>
+      <Router history={history}>
+        <ToastContainer />
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

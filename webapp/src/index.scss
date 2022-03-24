@@ -1,0 +1,36 @@
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './app/assets/styles/boostrap-overrides';
+@import './app/assets/styles/variables';
+
+@font-face {
+  font-family: 'MyFont';
+  src: local('MyFont'), url(./app/assets/fonts/Noto_Sans/NotoSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: local('MyFont'), url(./app/assets/fonts/Noto_Sans/NotoSans-Bold.ttf) format('truetype');
+  font-weight: bold;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  font-family: 'MyFont';
+}
+
+.px15 {
+  padding-left:15px;
+  padding-right:15px;
+}
+
+.centered-spinner {
+  display: flex;
+  justify-content: center;
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.2rem;
+  }
+}
