@@ -28,30 +28,15 @@ export const getById = async (req: Request, res: Response) => {
 };
 
 export const add = async (req: Request, res: Response) => {
-  const product = await productService.add({
-    ...req.body,
-    geolocation: {
-      type: "Point",
-      coordinates: [
-        req.body.geolocation.latitude,
-        req.body.geolocation.longitude,
-      ],
-    },
-  });
+  const product = await productService.add(req.body);
   res.status(httpStatus.OK).send(toProductDto(product));
 };
 
 export const update = async (req: Request, res: Response) => {
-  const product = await productService.update(parseInt(req.params.id, 10), {
-    ...req.body,
-    geolocation: {
-      type: "Point",
-      coordinates: [
-        req.body.geolocation.latitude,
-        req.body.geolocation.longitude,
-      ],
-    },
-  });
+  const product = await productService.update(
+    parseInt(req.params.id, 10),
+    req.body
+  );
   res.status(httpStatus.OK).send(toProductDto(product));
 };
 

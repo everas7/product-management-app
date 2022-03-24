@@ -16,6 +16,7 @@ import { Permissions } from "./app/authorization/permissions";
 import { Role } from "./app/models/user";
 import ProductListPage from "./features/products/pages/ProductListPage/ProductListPage";
 import ProductDetailPage from "./features/products/pages/ProductDetailPage/ProductDetailPage";
+import ProductCreatePage from "./features/products/pages/ProductCreatePage/ProductCreatePage";
 
 export default function Routes() {
   const dispatch = useAppDispatch();
@@ -53,6 +54,14 @@ export default function Routes() {
                 component={ProductListPage}
                 user={user!}
                 rolesAllowed={Permissions.Products.List.PageAccess as Role[]}
+                exact={true}
+              />
+              <AuthorizedRoute
+                path={["/products/create"]}
+                isLoggedIn={isAuthenticated}
+                component={ProductCreatePage}
+                user={user!}
+                rolesAllowed={Permissions.Products.Create.PageAccess as Role[]}
                 exact={true}
               />
               <AuthorizedRoute

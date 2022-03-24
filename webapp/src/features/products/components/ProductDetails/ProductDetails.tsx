@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { FaBed, FaRulerCombined } from "react-icons/fa";
+import React, {  } from "react";
 import cx from "classnames";
 import { Field, FieldProps, FormikContextType } from "formik";
 
 import { Product, IProductForm } from "../../../../app/models/product";
 import styles from "./ProductDetails.module.scss";
-import * as Constants from "../../../../app/constants";
 import { NumericInput, Input } from "../../../../app/components";
-import { AuthorizedComponent } from "../../../../app/authorization/AuthorizedComponent";
-import { Users } from "../../../../app/services/usersApi";
-import { User } from "../../../../app/models/user";
-import { useAppSelector } from "../../../../app/store/hooks";
-import { selectAuthenticatedUser } from "../../../access/services/accessSlice";
-import { Permissions } from "../../../../app/authorization/permissions";
 
 export interface ProductFormValues extends IProductForm {}
 
