@@ -19,7 +19,7 @@ export const validateProductExists = async (
   if (!product) {
     res
       .status(httpStatus.NOT_FOUND)
-      .send({ message: `Property with id ${req.params.id} does not exist` });
+      .send({ message: `Product with id ${req.params.id} does not exist` });
   } else {
     req.product = product;
   }
