@@ -11,7 +11,6 @@ export const get = async (req: Request, res: Response) => {
 };
 
 export const getCurrent = async (req: Request, res: Response) => {
-  console.log(req.user, 'veamos')
   const user = await userService.getById((req.user as User).id);
   res.status(httpStatus.OK).send(toUserDto(user!));
 };

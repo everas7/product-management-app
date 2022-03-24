@@ -50,7 +50,6 @@ const request = {
   },
   getPaginated: (url: string, params?: URLSearchParams) => {
     return axios.get(url, { params }).then((response) => {
-      console.log(response);
       return {
         data: response.data,
         pages: response.headers["total-pages"],
