@@ -29,7 +29,7 @@ export default function ProductDetails({
 }: Props): React.ReactElement<Props> {
   return (
     <div className={cx(styles["product-details"])}>
-      <div className={styles["product-details__name"]}>
+      <div className={styles["product-details__title"]}>
         {edit ? (
           <Field
             type="text"
