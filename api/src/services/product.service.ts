@@ -22,6 +22,10 @@ export const getAll = async (
           },
         }
       : {}),
+    [Op.or]: [
+      { title: { [Op.like]: `%${filters.query || ""}%` } },
+      { description: { [Op.like]: `%${filters.query || ""}%` } },
+    ],
   };
 
   return productRepository.findAllWhere(where, pagination);

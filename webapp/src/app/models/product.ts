@@ -31,4 +31,5 @@ export interface IProductFilters {
     min: number;
     max: number;
   };
+  query: string;
 }

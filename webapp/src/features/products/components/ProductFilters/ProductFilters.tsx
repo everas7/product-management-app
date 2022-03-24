@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import _ from 'lodash';
-import cx from 'classnames';
+import React, { useState } from "react";
+import _ from "lodash";
+import cx from "classnames";
 
-import { Button, RangeInput } from '../../../../app/components';
-import styles from './ProductFilters.module.scss';
-import { Range } from 'react-input-range';
-import { IProductFilters } from '../../../../app/models/product';
-import { useAppDispatch, useAppSelector } from '../../../../app/store/hooks';
+import { Button, Input, RangeInput } from "../../../../app/components";
+import styles from "./ProductFilters.module.scss";
+import { Range } from "react-input-range";
+import { IProductFilters } from "../../../../app/models/product";
+import { useAppDispatch, useAppSelector } from "../../../../app/store/hooks";
 import {
   defaultFilters,
   fetchProducts,
   selectFilters,
   setFilters,
   setPage,
-} from '../../services/productsSlice';
+} from "../../services/productsSlice";
+import { Form } from "react-bootstrap";
 
 interface Props {
   className?: string;
@@ -50,13 +51,28 @@ export default function ProductFilters({
   }
 
   return (
-    <div className={cx(styles['product-filters'], className)}>
-      <div className={styles['product-filters__controls']}>
+    <div className={cx(styles["product-filters"], className)}>
+      <div className={styles["product-filters__controls"]}>
         <Button onClick={() => handleApplyFilter(filters)}> Apply </Button>
         <Button variant="light" onClick={handleReset}>
           Reset
         </Button>
       </div>
+
+      <Form.Control
+        className="mb-3"
+        type="text"
+        placeholder="Search by title or description"
+        value={filters.query}
+        onChange={(event) =>
+          dispatch(
+            setFilters({
+              ...filters,
+              query: event.target.value,
+            })
+          )
+        }
+      />
 
       <RangeInput
         label="Price"
@@ -77,7 +93,7 @@ export default function ProductFilters({
         minLabelPrefix="$"
         maxLabelPrefix="$"
         maxLabelSuffix={`${
-          filters.price.max === defaultFilters.price.max ? '+' : ''
+          filters.price.max === defaultFilters.price.max ? "+" : ""
         }`}
       />
     </div>

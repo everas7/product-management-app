@@ -14,5 +14,5 @@ export type ProductForm = Omit<Product, "id" | "createdAt" | "updatedAt">;
 export interface ProductFilters {
   minPrice?: number;
   maxPrice?: number;
-  rooms?: number[];
+  query?: string;
 }

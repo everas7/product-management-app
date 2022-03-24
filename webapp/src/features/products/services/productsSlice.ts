@@ -15,9 +15,9 @@ export interface ProductsState {
 export const defaultFilters = {
   price: {
     min: 0,
-    max: 20000,
+    max: 1000,
   },
-  rooms: new Set<number>(),
+  query: "",
 };
 
 const initialState: ProductsState = {

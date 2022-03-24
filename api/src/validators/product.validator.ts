@@ -13,6 +13,7 @@ export const get = {
     filters: Joi.object().keys({
       minPrice: Joi.number(),
       maxPrice: Joi.number(),
+      query: Joi.string(),
     }),
     page: Joi.number().greater(0),
     pageSize: Joi.number().greater(0),
