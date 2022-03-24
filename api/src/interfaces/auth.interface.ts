@@ -1,16 +1,16 @@
-export type RoleForSignup = 'CLIENT' | 'REALTOR';
+import { Role } from "./user.interface";
 
 export interface SignupForm {
   name: string;
   email: string;
   password: string;
-  role: RoleForSignup;
+  roles: Role[];
 }
 
 export interface SignupResponse {
   name: string;
   email: string;
-  role: RoleForSignup;
+  roles: Role[];
 }
 
 export interface LoginForm {

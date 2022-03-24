@@ -5,7 +5,7 @@ export const toUserDto = (user: User): UserDto => {
     id: user.id,
     name: user.name,
     email: user.email,
-    role: user.role,
+    roles: user.roles,
     createdAt: user.createdAt,
     updatedAt: user.updatedAt,
   };

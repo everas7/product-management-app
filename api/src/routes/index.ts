@@ -1,25 +1,31 @@
-import express from 'express';
+import express from "express";
 
-import { userRouter } from './user.route';
-import { authRouter } from './auth.route';
-import { authenticateUser } from '../middlewares/auth.middleware';
+import { userRouter } from "./user.route";
+import { productRouter } from "./product.route";
+import { authRouter } from "./auth.route";
+import { authenticateUser } from "../middlewares/auth.middleware";
 
 export const router = express.Router();
 
 const routes = [
   {
-    path: '/users',
+    path: "/users",
     route: userRouter,
     authenticate: true,
   },
   {
-    path: '/',
+    path: "/products",
+    route: productRouter,
+    authenticate: true,
+  },
+  {
+    path: "/",
     route: authRouter,
   },
 ];
 
-router.get('/', (req: express.Request, res: express.Response) => {
-  res.status(200).send('Welcome to Test Project API');
+router.get("/", (req: express.Request, res: express.Response) => {
+  res.status(200).send("Welcome to Test Project API");
 });
 
 routes.forEach((route) => {

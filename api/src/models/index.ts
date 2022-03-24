@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize';
+import { initProduct } from './product.model';
 
 import { initUser } from './user.model';
 
@@ -16,6 +17,7 @@ const db = {
   sequelize,
   Sequelize,
   User: initUser(sequelize),
+  Product: initProduct(sequelize),
 };
 
 Object.values(db).forEach((model: any) => {
