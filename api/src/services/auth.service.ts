@@ -1,13 +1,8 @@
 import bcrypt from "bcrypt";
-import { SignupForm, LoginForm } from "../interfaces/auth.interface";
+import { LoginForm } from "../interfaces/auth.interface";
 import * as userRepository from "../repositories/user.repository";
 import { User } from "../interfaces/user.interface";
 import httpStatus from "http-status";
-
-export const signup = async (signupForm: SignupForm): Promise<User> => {
-  signupForm.password = await bcrypt.hash(signupForm.password, 10);
-  return userRepository.create(signupForm);
-};
 
 export const login = async (
   loginForm: LoginForm

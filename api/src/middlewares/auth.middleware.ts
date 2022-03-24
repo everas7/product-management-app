@@ -9,26 +9,6 @@ import httpStatus from "http-status";
 
 export const setupPassport = () => {
   passport.use(
-    "signup",
-    new passportLocal.Strategy(
-      {
-        usernameField: "email",
-        passwordField: "password",
-        passReqToCallback: true,
-      },
-      async (req: Request, email: string, password: string, done: Function) => {
-        try {
-          const user = await authServices.signup(req.body);
-
-          return done(null, user);
-        } catch (error) {
-          done(error);
-        }
-      }
-    )
-  );
-
-  passport.use(
     "login",
     new passportLocal.Strategy(
       {
