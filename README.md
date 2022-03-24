@@ -1,6 +1,9 @@
 # product-management-app
 
 ## Instructions on How To Run
+Change variables inside .env.example as you see fit.
+Note: WEBHOOK_URL might need to be changed
+
 ```
 cd api
 cp .env.example .env

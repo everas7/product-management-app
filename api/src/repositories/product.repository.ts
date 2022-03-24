@@ -36,6 +36,14 @@ export const findAllWhere = async (
   }));
 };
 
+export const findAllWhereNotPaginated = async (
+  where: WhereType
+): Promise<Product[]> => {
+  return db.Product.findAll({
+    where,
+  }).then((ul) => ul.map((ul) => ul.get({ plain: true })));
+};
+
 export const findById = async (id: number): Promise<Product | undefined> => {
   return db.Product.findByPk(id).then((m) =>
     m?.get({
@@ -44,7 +52,9 @@ export const findById = async (id: number): Promise<Product | undefined> => {
   );
 };
 
-export const create = async (product: ProductCreationAttributes): Promise<Product> => {
+export const create = async (
+  product: ProductCreationAttributes
+): Promise<Product> => {
   return db.Product.create(product).then(
     (u) => findById(u.getDataValue("id")) as Promise<Product>
   );

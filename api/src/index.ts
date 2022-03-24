@@ -9,10 +9,12 @@ import * as winston from "winston";
 import * as expressWinston from "express-winston";
 import debug from "debug";
 import passport from "passport";
+import * as cron from "node-cron";
 
 import { router } from "./routes";
 import { HttpError } from "./interfaces/error.interface";
 import { setupPassport } from "./middlewares/auth.middleware";
+import { exportModifiedProducts } from "./services/batch.service";
 
 dotenv.config();
 
@@ -65,6 +67,13 @@ app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
   debugLog(err);
   return res.status(err.statusCode || err.status || 500).json(err);
 });
+
+const job = cron.schedule("*/5 * * * *", async () => {
+  await exportModifiedProducts();
+  console.log("execute task every 5 minutes");
+});
+
+job.start();
 
 /**
  * Server Activation
