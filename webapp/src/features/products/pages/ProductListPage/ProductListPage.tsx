@@ -50,7 +50,7 @@ export default function ProductListPage() {
   }
 
   return (
-    <Row className="flex-grow-1 overflow-hidden">
+    <>
       <Col md="3" className="mh-100">
         <Button
           className="d-sm-block d-md-none w-100 mb-2"
@@ -146,6 +146,6 @@ export default function ProductListPage() {
           ""
         )}
       </Col>
-    </Row>
+    </>
   );
 }

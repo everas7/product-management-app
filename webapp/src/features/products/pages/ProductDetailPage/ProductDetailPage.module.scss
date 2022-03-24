@@ -1,0 +1,15 @@
+.product-detail-page {
+  &__content-container {
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  &__controls {
+    margin-top: 15px;
+    button:not(:last-child) {
+      margin-right: 10px;
+    }
+    display: flex;
+    flex-direction: row;
+  }
+}

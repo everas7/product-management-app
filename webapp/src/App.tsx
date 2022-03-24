@@ -15,6 +15,7 @@ import { AuthorizedRoute } from "./app/routes/AuthorizedRoute";
 import { Permissions } from "./app/authorization/permissions";
 import { Role } from "./app/models/user";
 import ProductListPage from "./features/products/pages/ProductListPage/ProductListPage";
+import ProductDetailPage from "./features/products/pages/ProductDetailPage/ProductDetailPage";
 
 export default function Routes() {
   const dispatch = useAppDispatch();
@@ -45,14 +46,24 @@ export default function Routes() {
         <Route>
           <Container className="d-flex flex-column vh-100 overflow-hidden">
             <Row className="flex-shrink-0">{isAuthenticated && <Navbar />}</Row>
-            <AuthorizedRoute
-              path={["/", "/products"]}
-              isLoggedIn={isAuthenticated}
-              component={ProductListPage}
-              user={user!}
-              rolesAllowed={Permissions.Products.List.PageAccess as Role[]}
-              exact={true}
-            />
+            <Row className="flex-grow-1 overflow-hidden">
+              <AuthorizedRoute
+                path={["/", "/products"]}
+                isLoggedIn={isAuthenticated}
+                component={ProductListPage}
+                user={user!}
+                rolesAllowed={Permissions.Products.List.PageAccess as Role[]}
+                exact={true}
+              />
+              <AuthorizedRoute
+                path={["/products/:id"]}
+                user={user!}
+                isLoggedIn={isAuthenticated}
+                component={ProductDetailPage}
+                rolesAllowed={Permissions.Products.Detail.PageAccess as Role[]}
+                exact={true}
+              />
+            </Row>
           </Container>
         </Route>
         <Route path="/(.+)" component={NotFound} />
