@@ -39,6 +39,7 @@ export default function ProductDetailPage(): JSX.Element {
       Products.get(parsedId)
         .then((res) => {
           setProduct(res);
+          setError("");
         })
         .catch((err) => {
           if (err.status === 403 || err.status === 404) {
