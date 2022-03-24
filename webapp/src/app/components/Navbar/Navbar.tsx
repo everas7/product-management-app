@@ -44,7 +44,7 @@ export function Navbar() {
           </Nav>
           <Nav>
             <NavDropdown
-              align="end"
+              alignRight={true}
               title={`${user?.name} `}
               id="basic-nav-dropdown"
             >

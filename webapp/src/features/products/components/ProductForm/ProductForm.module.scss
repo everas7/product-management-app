@@ -1,0 +1,9 @@
+.product-form {
+  &__controls {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    button:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}

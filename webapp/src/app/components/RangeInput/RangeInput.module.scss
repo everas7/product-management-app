@@ -1,0 +1,33 @@
+@import '../../assets/styles/variables';
+
+.range-input {
+  margin-bottom: 40px;
+
+  &__label{ 
+    font-size: 16px;
+    font-weight: 550;
+  }
+
+  &__label-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__label-values {
+    color: $primary;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__manual-controls {
+    display: flex;
+    flex-direction: row;
+    &-divider {
+      line-height: 37px;
+      margin: 0 2px;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@import '../../assets/styles/variables';
+@import 'react-input-range/lib/css/index.css';
+
+.input-range__slider {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.input-range__track--active {
+  background-color: $primary;
+}
+
+.input-range__label {
+  display: none;
+}
+
+.input-range__slider-container {
+  padding: 0 5px;
+}
+

@@ -6,3 +6,4 @@ export * from './NotFound/NotFound';
 export * from './NumericInput/NumericInput';
 export * from './IconButton/IconButton';
 export * from './FullScreenSpinner/FullScreenSpinner';
+export * from './RangeInput/RangeInput';

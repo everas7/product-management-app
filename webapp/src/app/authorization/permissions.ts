@@ -5,11 +5,7 @@ import {
   Role,
 } from "../models/user";
 
-interface Permissions {
-  [x: string]: Role[] | Permissions;
-}
-
-export const Permissions: Permissions = {
+export const Permissions = {
   All: [PRODUCT_CREATORS, PRODUCT_MANAGERS, PRODUCT_PRICING],
   Products: {
     List: {

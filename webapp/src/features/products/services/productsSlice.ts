@@ -2,10 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState, AppThunk } from "../../../app/store/store";
 import { formatQueryParams } from "../../../app/helpers/productsHelpers";
+import { IProductFilters, ProductForList } from "../../../app/models/product";
+import { Products } from "./productsApi";
 
-type IProductFilters = any;
-type ProductForList = any;
-const Products = {} as any;
 export interface ProductsState {
   products: ProductForList[];
   page: number;
@@ -17,10 +16,6 @@ export const defaultFilters = {
   price: {
     min: 0,
     max: 20000,
-  },
-  floorAreaSize: {
-    min: 0,
-    max: 7000,
   },
   rooms: new Set<number>(),
 };

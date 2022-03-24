@@ -49,10 +49,13 @@ const request = {
     return axios.get(url, { params }).then(responseBody);
   },
   getPaginated: (url: string, params?: URLSearchParams) => {
-    return axios.get(url, { params }).then((response) => ({
-      data: response.data,
-      pages: response.headers["total-pages"],
-    }));
+    return axios.get(url, { params }).then((response) => {
+      console.log(response);
+      return {
+        data: response.data,
+        pages: response.headers["total-pages"],
+      };
+    });
   },
   post: (url: string, body: {}) => axios.post(url, body).then(responseBody),
   put: (url: string, body: {}) => axios.put(url, body).then(responseBody),
