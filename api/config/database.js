@@ -2,8 +2,8 @@ module.exports = {
   development: {
     username: 'root',
     password: 'DB_P@$$w0rd',
-    database: 'demo_ar_db',
-    host: 'localhost',
+    database: 'pm_db_test',
+    host: 'mysqldb',
     port: 3306,
     dialect: 'mysql',
   },

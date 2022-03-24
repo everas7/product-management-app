@@ -1,0 +1,49 @@
+version: '3.8'
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    platform: linux/amd64
+    restart: unless-stopped
+    env_file: ./.env
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$DB_DATABASE
+    ports:
+      - $DB_PORT:$DB_PORT
+    working_dir: /usr/src/app
+    volumes:
+      - db:/var/lib/mysql
+      - ./:/usr/src/app
+    networks:
+      - app-tier   
+    healthcheck:
+      test: "mysql $$DB_DATABASE -u$$DB_USERNAME -p$$DB_PASSWORD -e 'SELECT 1;'"
+      interval: 20s
+      timeout: 10s
+      retries: 5
+  api:
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+    build: .
+    env_file: ./.env
+    ports:
+      - $PORT:$PORT
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER=$DB_USERNAME
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_NAME=$DB_DATABASE
+      - DB_PORT=$DB_PORT
+    stdin_open: true
+    tty: true
+    networks:
+      - app-tier   
+volumes: 
+  db:
